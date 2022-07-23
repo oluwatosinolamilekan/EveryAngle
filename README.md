@@ -72,3 +72,5 @@ While migrating the database, you need to serve the project with this command `p
 ```
  php artisan test
 ```
+![alt text](public/testing.png)
+
