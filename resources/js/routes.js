@@ -7,7 +7,7 @@ export const routes = [
         component: LoginComponent
     },
     {
-        path: '/',
+        path: '/categories',
         name: 'ListCategoryComponent',
         component: ListCategoryComponent
     },
