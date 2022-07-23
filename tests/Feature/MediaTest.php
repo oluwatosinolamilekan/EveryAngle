@@ -25,6 +25,19 @@ class MediaTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function test_user_can_create_media()
+    {
+        $data = [
+            'name' => $this->faker->name,
+            'category_id' => 1,
+        ];
+        $this->json('post','api/media/store', $data, [
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer ' . $this->getToken()
+        ])
+            ->assertStatus(201);
+    }
+
     public function test_user_can_view_a_media()
     {
         $media = Media::first();
@@ -34,24 +47,15 @@ class MediaTest extends TestCase
         ])->assertStatus(200);
     }
 
-    public function test_user_can_create_media()
-    {
-        $data = [
-            'name' => $this->faker->name
-        ];
-        $this->json('post','api/media/store', $data, [
-            'Accept' => 'application/json',
-            'Authorization' => 'Bearer ' . $this->getToken()
-        ])
-            ->assertStatus(201);
-    }
 
     public function test_user_can_edit_media()
     {
-        $data = [
-            'name' => $this->faker->name
-        ];
         $media = Media::first();
+        $data = [
+            'name' => $this->faker->name,
+            'category_id' => $media->category_id
+        ];
+        
         $this->json('put','api/media/update/'.$media->id, $data, [
             'Accept' => 'application/json',
             'Authorization' => 'Bearer ' . $this->getToken()

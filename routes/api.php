@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/login', [UserController::class, 'login']);
 
-//Route::middleware(['auth_api'])->group(function () {
+Route::middleware(['auth_api'])->group(function () {
     Route::get('/profile', [UserController::class, 'show']);
     Route::controller(CategoryController::class)->group(function () {
         Route::prefix('category')->group(function () {
@@ -44,5 +44,5 @@ Route::post('/login', [UserController::class, 'login']);
             Route::delete('/delete/{id}', 'delete');
         });
     });
-//});
+});
 

@@ -31,6 +31,10 @@ class CategoryController extends Controller
         }
     }
 
+    /**
+     * @param $id
+     * @return CategoryResources|JsonResponse
+     */
     public function view($id)
     {
         try {
@@ -41,7 +45,11 @@ class CategoryController extends Controller
         }
     }
 
-    public function create(StoreCategoryRequest  $request)
+    /**
+     * @param StoreCategoryRequest $request
+     * @return CategoryResources|JsonResponse
+     */
+    public function create(StoreCategoryRequest $request)
     {
         try {
             $category = (new CreateCategory())->action($request->validated());
@@ -51,6 +59,11 @@ class CategoryController extends Controller
         }
     }
 
+    /**
+     * @param UpdateCategoryRequest $request
+     * @param $id
+     * @return JsonResponse|object
+     */
     public function update(UpdateCategoryRequest $request, $id)
     {
         try {
@@ -63,6 +76,10 @@ class CategoryController extends Controller
         }
     }
 
+    /**
+     * @param $id
+     * @return JsonResponse
+     */
     public function delete($id)
     {
         try {

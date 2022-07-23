@@ -10,29 +10,50 @@ use App\Actions\Media\UpdateMedia;
 use App\Http\Requests\storeMediaRequest;
 use App\Http\Requests\UpdateMediaRequest;
 use App\Http\Resources\MediaResource;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class MediaController extends Controller
 {
-    public function index()
+    /**
+     * @return AnonymousResourceCollection
+     */
+    public function index(): AnonymousResourceCollection
     {
         $medias = (new ListMedia())->action();
         return MediaResource::collection($medias);
     }
 
-    public function view($id)
+    /**
+     * @param $id
+     * @return MediaResource
+     * @throws Exception
+     */
+    public function view($id): MediaResource
     {
         $media = (new ViewCategory())->action($id);
         return new MediaResource($media);
     }
 
-    public function create(StoreMediaRequest $request)
+    /**
+     * @param storeMediaRequest $request
+     * @return MediaResource
+     */
+    public function create(StoreMediaRequest $request): MediaResource
     {
         $media = (new CreateMedia())->action($request->validated());
         return new MediaResource($media);
     }
 
-    public function update(UpdateMediaRequest $request,$id)
+    /**
+     * @param UpdateMediaRequest $request
+     * @param $id
+     * @return JsonResponse|object
+     * @throws Exception
+     */
+    public function update(UpdateMediaRequest $request, $id): JsonResponse
     {
         $media = (new UpdateMedia())->action($request->validated(), $id);
         return (new MediaResource($media))
@@ -40,7 +61,12 @@ class MediaController extends Controller
             ->setStatusCode(204);
     }
 
-    public function delete($id)
+    /**
+     * @param $id
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function delete($id): JsonResponse
     {
         (new DeleteMedia())->action($id);
         return $this->resourceDeleted();
