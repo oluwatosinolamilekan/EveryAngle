@@ -2,7 +2,7 @@ import ListCategoryComponent from './components/category/ListCategoryComponent.v
 import LoginComponent from './components/user/LoginComponent.vue'
 export const routes = [
     {
-      'path': '/',
+      'path': '/login',
         name: 'LoginComponent',
         component: LoginComponent
     },

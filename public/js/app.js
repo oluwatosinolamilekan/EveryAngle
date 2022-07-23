@@ -2386,11 +2386,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [{
-  'path': '/',
+  'path': '/login',
   name: 'LoginComponent',
   component: _components_user_LoginComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
 }, {
-  path: '/',
+  path: '/categories',
   name: 'ListCategoryComponent',
   component: _components_category_ListCategoryComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }];
