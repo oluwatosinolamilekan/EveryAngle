@@ -76,4 +76,4 @@ While migrating the database, you need to serve the project with this command `p
 
 ### Sample Requests
 The EveryAngle API gives you access to pretty much all the features you can use on our dashboard and lets you extend them for use in your application. It strives to be RESTful and is organized around the main resources you would be interacting with - with a few notable exceptions.
-The Api Collection is located in the application, and it called EveryAngle.postman_collection.json
+The Api Collection is located in the application, and it called `EveryAngle.postman_collection.json`
